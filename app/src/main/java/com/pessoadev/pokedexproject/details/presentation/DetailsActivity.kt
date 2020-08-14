@@ -1,12 +1,14 @@
+package com.pessoadev.pokedexproject.details.presentation
+
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.pessoadev.pokedexproject.R
-import com.pessoadev.pokedexproject.list.presentation.DetailsViewModel
-import com.pessoadev.pokedexproject.list.presentation.ListViewModel
 
-class ListActivity : AppCompatActivity() {
+
+
+class DetailsActivity : AppCompatActivity() {
 
     private val viewModel: DetailsViewModel by viewModels()
 
@@ -21,7 +23,8 @@ class ListActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.pokeDetailsResponse.observe(this, Observer {
             println(it.name)
-            println(it.weight)
+            println(it.id)
+
         })
     }
 }

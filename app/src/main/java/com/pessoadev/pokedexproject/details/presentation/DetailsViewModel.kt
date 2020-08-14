@@ -1,10 +1,8 @@
-package com.pessoadev.pokedexproject.list.presentation
+package com.pessoadev.pokedexproject.details.presentation
 
 import DetailsRepository
 import PokeDetailsResponse
 import androidx.lifecycle.*
-import com.pessoadev.pokedexproject.list.model.PokeListResponse
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
