@@ -1,5 +1,6 @@
 package com.pessoadev.pokedexproject.commons
 
+import com.pessoadev.pokedexproject.details.service.DetailsService
 import com.pessoadev.pokedexproject.list.service.ListService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,4 +35,5 @@ class NetworkModule {
     }
 
     fun getListService (): ListService = NetworkModule().getService().create(ListService::class.java)
+    fun getDetailsService (): DetailsService = NetworkModule().getService().create(DetailsService::class.java)
 }
