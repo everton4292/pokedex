@@ -1,5 +1,5 @@
 import com.pessoadev.pokedexproject.commons.NetworkModule
-import com.pessoadev.pokedexproject.list.model.PokeListResponse
+
 
 class DetailsRepository{
 
