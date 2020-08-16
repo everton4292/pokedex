@@ -7,13 +7,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 class NetworkModule {
 
     private fun getService(): Retrofit {
         val okhttp = createOkHttpClient()
-        val retrofit = createRetrofit(okhttp, "https://pokeapi.co/api/v2/")
-        return retrofit
+        return createRetrofit(okhttp, "https://pokeapi.co/api/v2/")
     }
 
     private fun createOkHttpClient(): OkHttpClient {

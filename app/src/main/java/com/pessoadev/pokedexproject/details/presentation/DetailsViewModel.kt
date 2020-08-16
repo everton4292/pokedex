@@ -1,7 +1,7 @@
 package com.pessoadev.pokedexproject.details.presentation
 
-import DetailsRepository
-import PokeDetailsResponse
+import com.pessoadev.pokedexproject.details.domain.DetailsRepository
+import com.pessoadev.pokedexproject.details.model.PokeDetailsResponse
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -10,7 +10,8 @@ class DetailsViewModel : ViewModel() {
 
     private val detailsRepository = DetailsRepository()
 
-    var pokeDetailsResponse = MutableLiveData<PokeDetailsResponse>().apply { mutableListOf<PokeDetailsResponse>() }
+    var pokeDetailsResponse =
+        MutableLiveData<PokeDetailsResponse>().apply { mutableListOf<PokeDetailsResponse>() }
 
     fun getPokeDetails() {
         viewModelScope.launch {
@@ -21,5 +22,4 @@ class DetailsViewModel : ViewModel() {
             }
         }
     }
-
 }

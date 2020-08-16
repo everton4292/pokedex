@@ -1,3 +1,5 @@
+package com.pessoadev.pokedexproject.details.model
+
 data class PokeDetailsResponse(
     val abilities: List<Ability>,
     val base_experience: Int,
