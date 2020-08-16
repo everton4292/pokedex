@@ -1,6 +1,6 @@
 package com.pessoadev.pokedexproject.details.service
 
-import PokeDetailsResponse
+import com.pessoadev.pokedexproject.details.model.PokeDetailsResponse
 
 import retrofit2.http.GET
 import retrofit2.http.Path

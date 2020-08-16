@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import com.pessoadev.pokedexproject.R
+import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val viewModel: ListViewModel by viewModels()
