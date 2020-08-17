@@ -10,12 +10,12 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 interface PokedexRepository {
-    fun getDetailsService (): DetailsService
-    fun getListService () : ListService
+    fun getDetailsService(): DetailsService
+
 }
 
-class PokedexRepositoryImpl @Inject constructor(private val retrofit : Retrofit) : PokedexRepository {
+class PokedexRepositoryImpl @Inject constructor(private val retrofit: Retrofit) :
+    PokedexRepository {
 
-    override fun getListService() : ListService = retrofit.create(ListService::class.java)
-    override fun getDetailsService (): DetailsService = retrofit.create(DetailsService::class.java)
+    override fun getDetailsService(): DetailsService = retrofit.create(DetailsService::class.java)
 }

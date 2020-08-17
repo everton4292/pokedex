@@ -16,13 +16,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     fun insertData(result: MutableList<PokeListResponse>) {
         this.result.addAll(result)
-
         notifyDataSetChanged()
     }
 
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
 
     }
 
@@ -35,7 +33,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     override fun getItemCount(): Int {
         return result.size
-
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
