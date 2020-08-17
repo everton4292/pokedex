@@ -1,6 +1,7 @@
 package com.pessoadev.pokedexproject.list.model
 
 data class PokeListResponse(
+
     val count: Int,
     val next: String,
     val previous: String,
@@ -8,6 +9,7 @@ data class PokeListResponse(
 )
 
 data class Result(
+
     val name: String,
     val url: String
 )
