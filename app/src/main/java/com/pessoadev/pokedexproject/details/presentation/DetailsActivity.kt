@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.pessoadev.pokedexproject.R
+import dagger.hilt.android.AndroidEntryPoint
 
 
 

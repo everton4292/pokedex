@@ -1,5 +1,8 @@
+package com.pessoadev.pokedexproject.details.domain
+
 import com.pessoadev.pokedexproject.commons.NetworkModule
-import com.pessoadev.pokedexproject.list.model.PokeListResponse
+import com.pessoadev.pokedexproject.details.model.PokeDetailsResponse
+
 
 class DetailsRepository{
 
