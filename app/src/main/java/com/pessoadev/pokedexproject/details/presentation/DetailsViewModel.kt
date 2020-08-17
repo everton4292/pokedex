@@ -16,7 +16,7 @@ class DetailsViewModel : ViewModel() {
     fun getPokeDetails() {
         viewModelScope.launch {
             try {
-                pokeDetailsResponse.value = detailsRepository.getPokeDetails()
+//                pokeDetailsResponse.value = detailsRepository.getPokeDetails()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
