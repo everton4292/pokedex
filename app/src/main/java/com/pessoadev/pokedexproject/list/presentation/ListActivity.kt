@@ -21,11 +21,11 @@ class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        var recyclerView = list_RecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = listAdapter
-
+        recyclerViewPokeList.layoutManager = LinearLayoutManager(this)
+        recyclerViewPokeList.adapter = listAdapter
+        (recyclerViewPokeList.adapter as ListAdapter).setOnPokemonListener {
+            println(it)
+        }
 
         viewModel.getPokeList()
         setupObservers()
@@ -33,10 +33,9 @@ class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private fun setupObservers() {
         viewModel.pokeList.observe(this, Observer {
-            println(it.results.get(0).url)
+            (recyclerViewPokeList.adapter as ListAdapter).insertData(it)
         })
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
