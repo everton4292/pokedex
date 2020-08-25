@@ -1,5 +1,6 @@
 package com.pessoadev.pokedexproject.list.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.viewModels
@@ -26,6 +27,7 @@ class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         (recyclerViewPokeList.adapter as ListAdapter).setOnPokemonListener {
             println(it)
         }
+
 
         viewModel.getPokeList()
         setupObservers()

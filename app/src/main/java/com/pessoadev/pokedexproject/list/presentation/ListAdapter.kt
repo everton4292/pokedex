@@ -1,10 +1,14 @@
 package com.pessoadev.pokedexproject.list.presentation
 
+
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.pessoadev.pokedexproject.R
+import com.pessoadev.pokedexproject.details.presentation.DetailsActivity
 import com.pessoadev.pokedexproject.list.model.PokeListResponse
 import com.pessoadev.pokedexproject.list.model.Pokemon
 import kotlinx.android.synthetic.main.pokemon_row.view.*
@@ -21,12 +25,18 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     }
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         fun bind(pokemon: Pokemon) {
+
             itemView.pokemonName.text = pokemon.name
             itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailsActivity::class.java)
+                itemView.context.startActivity(intent)
+                    .apply { intent.putExtra("POKEMON_NAME", pokemon.name) }
                 pokemonListener.onClick(pokemon.url)
             }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -49,11 +59,13 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     interface OnPokemonClickListener {
         fun onClick(url: String) = Unit
+
     }
 
     inline fun setOnPokemonListener(crossinline listener: (String) -> Unit) {
         this.pokemonListener = object : OnPokemonClickListener {
             override fun onClick(url: String) = listener(url)
+
         }
     }
 
