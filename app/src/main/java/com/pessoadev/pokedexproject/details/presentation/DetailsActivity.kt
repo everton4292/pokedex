@@ -14,16 +14,17 @@ import kotlinx.android.synthetic.main.details_activity.*
 class DetailsActivity : AppCompatActivity() {
 
     private val viewModel: DetailsViewModel by viewModels()
-    //var pokemonName = intent.getStringExtra("POKEMON_NAME")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.details_activity)
 
-        viewModel.getPokeDetails()
+        var url = intent.getStringExtra("POKEMON_URL")
+        textViewPokemonName.text = url
+        url?.let { viewModel.getPokeDetails(url) }
         setupObservers()
 
-        //textViewPokemonName.text = pokemonName
     }
 
     private fun setupObservers() {

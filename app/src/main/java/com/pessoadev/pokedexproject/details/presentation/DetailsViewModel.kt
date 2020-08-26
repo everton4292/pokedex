@@ -13,10 +13,10 @@ class DetailsViewModel @ViewModelInject constructor(private val detailsRepositor
     var pokeDetailsResponse =
         MutableLiveData<PokeDetailsResponse>().apply { mutableListOf<PokeDetailsResponse>() }
 
-    fun getPokeDetails() {
+    fun getPokeDetails(url : String) {
         viewModelScope.launch {
             try {
-//                pokeDetailsResponse.value = detailsRepository.getPokeDetails()
+              pokeDetailsResponse.value = detailsRepository.getPokeDetails(url)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

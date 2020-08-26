@@ -30,9 +30,6 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
             itemView.pokemonName.text = pokemon.name
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailsActivity::class.java)
-                itemView.context.startActivity(intent)
-                    .apply { intent.putExtra("POKEMON_NAME", pokemon.name) }
                 pokemonListener.onClick(pokemon.url)
             }
         }

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pessoadev.pokedexproject.R
+import com.pessoadev.pokedexproject.details.presentation.DetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,8 +25,10 @@ class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         recyclerViewPokeList.layoutManager = LinearLayoutManager(this)
         recyclerViewPokeList.adapter = listAdapter
-        (recyclerViewPokeList.adapter as ListAdapter).setOnPokemonListener {
-            println(it)
+        (recyclerViewPokeList.adapter as ListAdapter).setOnPokemonListener { url ->
+            val intent = Intent(this, DetailsActivity::class.java)
+                .apply { putExtra("POKEMON_URL", url) }
+            startActivity(intent)
         }
 
 
