@@ -12,12 +12,10 @@ interface DetailsRepository {
 class DetailsRepositoryImpl @Inject constructor(private val detailsService: DetailsService) :
     DetailsRepository {
 
-
     override suspend fun getPokeDetails(url: String): PokeDetailsResponse {
-
         val urlArray = url.split("/")
-        val ovo = detailsService.getPokeDetails(urlArray[urlArray.size - 1])
+        val pokemonId = urlArray[urlArray.size - 2]
 
-        return ovo
+        return detailsService.getPokeDetails(pokemonId)
     }
 }

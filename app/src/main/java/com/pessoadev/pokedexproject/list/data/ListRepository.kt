@@ -1,7 +1,7 @@
-package com.pessoadev.pokedexproject.list.domain
+package com.pessoadev.pokedexproject.list.data
 
-import com.pessoadev.pokedexproject.list.model.PokeListResponse
-import com.pessoadev.pokedexproject.list.service.ListService
+import com.pessoadev.pokedexproject.list.data.model.PokeListResponse
+import com.pessoadev.pokedexproject.list.data.service.ListService
 import javax.inject.Inject
 
 interface ListRepository {

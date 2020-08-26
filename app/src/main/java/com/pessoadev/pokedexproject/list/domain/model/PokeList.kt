@@ -1,6 +1,6 @@
-package com.pessoadev.pokedexproject.list.model
+package com.pessoadev.pokedexproject.list.domain.model
 
-data class PokeListResponse(
+data class PokeList(
     val count: Int,
     val next: String,
     val previous: String?,

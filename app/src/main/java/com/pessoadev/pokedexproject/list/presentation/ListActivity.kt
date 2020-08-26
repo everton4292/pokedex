@@ -12,12 +12,14 @@ import com.pessoadev.pokedexproject.R
 import com.pessoadev.pokedexproject.details.presentation.DetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val viewModel: ListViewModel by viewModels()
-    private var listAdapter = ListAdapter()
+
+    @Inject lateinit var listAdapter : ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +29,9 @@ class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         recyclerViewPokeList.adapter = listAdapter
         (recyclerViewPokeList.adapter as ListAdapter).setOnPokemonListener { url ->
             val intent = Intent(this, DetailsActivity::class.java)
-                .apply { putExtra("POKEMON_URL", url) }
+                .apply { putExtra(POKEMON_URL_PARAM, url) }
             startActivity(intent)
         }
-
 
         viewModel.getPokeList()
         setupObservers()
@@ -57,5 +58,9 @@ class ListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return false
+    }
+
+    companion object {
+        const val POKEMON_URL_PARAM = "POKEMON_URL"
     }
 }

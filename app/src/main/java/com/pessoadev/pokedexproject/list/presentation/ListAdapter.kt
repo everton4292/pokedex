@@ -1,16 +1,13 @@
 package com.pessoadev.pokedexproject.list.presentation
 
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.pessoadev.pokedexproject.R
-import com.pessoadev.pokedexproject.details.presentation.DetailsActivity
-import com.pessoadev.pokedexproject.list.model.PokeListResponse
-import com.pessoadev.pokedexproject.list.model.Pokemon
+import com.pessoadev.pokedexproject.list.domain.model.Pokemon
+import com.pessoadev.pokedexproject.list.domain.model.PokeList
 import kotlinx.android.synthetic.main.pokemon_row.view.*
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
@@ -18,7 +15,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     lateinit var pokemonListener: OnPokemonClickListener
     private val pokemonList: MutableList<Pokemon> = mutableListOf()
 
-    fun insertData(pokeList: PokeListResponse) {
+    fun insertData(pokeList: PokeList) {
         val pokemons = pokeList.results.map { it }
         pokemonList.addAll(pokemons)
         notifyDataSetChanged()
