@@ -1,26 +1,66 @@
 package com.pessoadev.pokedexproject.list.presentation
 
+
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.pessoadev.pokedexproject.R
+import com.pessoadev.pokedexproject.list.domain.model.Pokemon
+import com.pessoadev.pokedexproject.list.domain.model.PokeList
+import kotlinx.android.synthetic.main.pokemon_row.view.*
 
+class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
-class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>(){
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    lateinit var pokemonListener: OnPokemonClickListener
+    private val pokemonList: MutableList<Pokemon> = mutableListOf()
+
+    fun insertData(pokeList: PokeList) {
+        val pokemons = pokeList.results.map { it }
+        pokemonList.addAll(pokemons)
+        notifyDataSetChanged()
+    }
+
+    inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun bind(pokemon: Pokemon) {
+
+            itemView.pokemonName.text = pokemon.name
+            itemView.setOnClickListener {
+                pokemonListener.onClick(pokemon.url)
+            }
+        }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ListViewHolder {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+        val cellRowList =
+            LayoutInflater.from(parent.context).inflate(R.layout.pokemon_row, parent, false)
+        return ListViewHolder(cellRowList)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return pokemonList.size
     }
 
-    override fun onBindViewHolder(holder: ListAdapter.ListViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    private fun getItem(position: Int): Pokemon {
+        return pokemonList[position]
+    }
+
+    interface OnPokemonClickListener {
+        fun onClick(url: String) = Unit
+
+    }
+
+    inline fun setOnPokemonListener(crossinline listener: (String) -> Unit) {
+        this.pokemonListener = object : OnPokemonClickListener {
+            override fun onClick(url: String) = listener(url)
+
+        }
     }
 
 }
-

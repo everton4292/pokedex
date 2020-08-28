@@ -1,7 +1,7 @@
-package com.pessoadev.pokedexproject.list.service
+package com.pessoadev.pokedexproject.list.data.service
 
 
-import com.pessoadev.pokedexproject.list.model.PokeListResponse
+import com.pessoadev.pokedexproject.list.data.model.PokeListResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

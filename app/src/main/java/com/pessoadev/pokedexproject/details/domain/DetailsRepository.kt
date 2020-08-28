@@ -1,12 +1,21 @@
 package com.pessoadev.pokedexproject.details.domain
 
-import com.pessoadev.pokedexproject.commons.NetworkModule
 import com.pessoadev.pokedexproject.details.model.PokeDetailsResponse
+import com.pessoadev.pokedexproject.details.service.DetailsService
+import javax.inject.Inject
 
 
-class DetailsRepository{
+interface DetailsRepository {
+    suspend fun getPokeDetails(url: String): PokeDetailsResponse
+}
 
-    private val service = NetworkModule().getDetailsService()
+class DetailsRepositoryImpl @Inject constructor(private val detailsService: DetailsService) :
+    DetailsRepository {
 
-    suspend fun getPokeDetails(): PokeDetailsResponse = service.getPokeDetails("ditto")
+    override suspend fun getPokeDetails(url: String): PokeDetailsResponse {
+        val urlArray = url.split("/")
+        val pokemonId = urlArray[urlArray.size - 2]
+
+        return detailsService.getPokeDetails(pokemonId)
+    }
 }
