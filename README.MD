@@ -6,5 +6,5 @@
 1. Coroutines
 1. Okhttp / Retrofit
 1. Coil (image loader)
-1. Clean code (Interactor / userCase)
+1. Clean code (Interactor / Use Case)
 1. Unit test (mockK, mockito)
